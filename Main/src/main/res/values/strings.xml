@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Collager</string>
+    <string name="hint_user_nick">Instagram nickname</string>
+    <string name="get_collage">Get collage</string>
+    <string name="build_collage">Build collage</string>
+    <string name="send">Send</string>
+    <string name="sending_with">Send with:</string>
+    <string name="email_subject">Collage from Collager</string>
+
+    <string name="status_search_user">Searching id...</string>
+    <string name="status_loading">Loading data...</string>
+    <string name="status_collage_building">Building collage...</string>
+
+    <string name="toast_user_not_found">User not found.</string>
+    <string name="toast_access_denied">User profile not available.</string>
+    <string name="toast_io_exception">No connection.</string>
+    <string name="toast_save_collage_failed">Failed to save collage into SD card.</string>
+    <string name="toast_load_collage_failed">Failed to load collage from SD card.</string>
+    <string name="toast_out_of_memory">Not enough memory to create a collage.</string>
+    <string name="toast_no_collage_elements">No elements to create a collage.</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Collager</string>
+    <string name="hint_user_nick">Ник пользователя Instagram</string>
+    <string name="get_collage">Сделать коллаж</string>
+    <string name="build_collage">Создать коллаж</string>
+    <string name="send">Отправить</string>
+    <string name="sending_with">Отправить через:</string>
+    <string name="email_subject">Коллаж от Collager</string>
+
+    <string name="status_search_user">Поиск id...</string>
+    <string name="status_loading">Загрузка данных...</string>
+    <string name="status_collage_building">Создание коллажа...</string>
+
+    <string name="toast_user_not_found">Пользователь не найден.</string>
+    <string name="toast_access_denied">Профиль пользователя недоступен.</string>
+    <string name="toast_io_exception">Нет подключения.</string>
+    <string name="toast_save_collage_failed">Не удалось сохранить коллаж на SD карту.</string>
+    <string name="toast_load_collage_failed">Не удалось зарузить коллаж с SD карты.</string>
+    <string name="toast_out_of_memory">Недостаточно памяти для создания коллажа.</string>
+    <string name="toast_no_collage_elements">Нет элементов для создания коллажа.</string>
+</resources>
