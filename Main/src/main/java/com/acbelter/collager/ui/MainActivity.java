@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,13 +15,15 @@ import com.acbelter.collager.network.GetPhotosDataCommand;
 import com.acbelter.collager.network.GetUserIdCommand;
 import com.acbelter.nslib.NetworkApplication;
 import com.acbelter.nslib.NetworkServiceCallbackListener;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity implements NetworkServiceCallbackListener {
+    private AdView mBanner;
     private CollagerNetworkServiceHelper mServiceHelper;
     private EditText mUserNick;
-    private Button mGetCollageButton;
+    private ScaledButton mGetCollageButton;
     private TextView mStatus;
 
     private int mGetUserIdRequestId = -1;
@@ -35,7 +36,7 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
 
         setContentView(R.layout.activity_main);
         mUserNick = (EditText) findViewById(R.id.user_nick);
-        mGetCollageButton = (Button) findViewById(R.id.btn_get_collage);
+        mGetCollageButton = (ScaledButton) findViewById(R.id.btn_get_collage);
         mStatus = (TextView) findViewById(R.id.status);
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -57,6 +58,9 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
             mStatus.setText(savedInstanceState.getCharSequence("status"));
             setUiEnabled(savedInstanceState.getBoolean("ui_enabled"));
         }
+
+        mBanner = (AdView) findViewById(R.id.banner);
+        mBanner.loadAd(CollagerAdRequestGenerator.generate());
     }
 
     private void setUiEnabled(boolean enabled) {
@@ -74,15 +78,29 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        if (mBanner != null) {
+            mBanner.pause();
+        }
+        mServiceHelper.removeListener(this);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+        if (mBanner != null) {
+            mBanner.resume();
+        }
         mServiceHelper.addListener(this);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        mServiceHelper.removeListener(this);
+    public void onDestroy() {
+        if (mBanner != null) {
+            mBanner.destroy();
+        }
+        super.onDestroy();
     }
 
     private NetworkApplication getApp() {

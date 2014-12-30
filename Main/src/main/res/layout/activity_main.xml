@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:ads="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_gravity="center_horizontal"
-              android:layout_marginLeft="16dp"
-              android:layout_marginRight="16dp">
+              android:paddingLeft="16dp"
+              android:paddingRight="16dp"
+              android:background="@android:color/white">
+
+    <com.google.android.gms.ads.AdView
+      android:id="@+id/banner"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      ads:adSize="BANNER"
+      ads:adUnitId="ca-app-pub-5402599698363250/3698338924"/>
 
     <View
       android:layout_width="match_parent"
@@ -16,18 +26,30 @@
       android:id="@+id/user_nick"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="8dp"
+      android:layout_marginLeft="30dp"
+      android:layout_marginRight="30dp"
+      android:layout_marginBottom="16dp"
+      android:paddingLeft="4dp"
+      android:paddingRight="4dp"
       android:lines="1"
-      android:maxLength="30"
+      android:imeOptions="flagNoExtractUi"
       android:digits="0123456789QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm_"
-      android:hint="@string/hint_user_nick"/>
+      android:hint="@string/hint_user_nick"
+      android:background="@drawable/black_border"
+      android:textSize="20sp"
+      android:typeface="monospace"/>
 
-    <Button
+    <com.acbelter.collager.ui.ScaledButton
       android:id="@+id/btn_get_collage"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:paddingLeft="16dp"
+      android:paddingRight="16dp"
       android:layout_gravity="center_horizontal"
-      android:text="@string/get_collage"/>
+      android:text="@string/get_collage"
+      android:textSize="20sp"
+      android:typeface="monospace"
+      android:background="@drawable/black_border"/>
 
     <View
       android:layout_width="match_parent"
@@ -38,6 +60,7 @@
       android:id="@+id/status"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:gravity="center_horizontal"/>
+      android:gravity="center_horizontal"
+      android:typeface="monospace"/>
 </LinearLayout>
 

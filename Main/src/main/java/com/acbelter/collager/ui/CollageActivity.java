@@ -11,10 +11,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.acbelter.collager.Constants;
 import com.acbelter.collager.InstagramImageData;
 import com.acbelter.collager.R;
@@ -31,9 +29,8 @@ import java.util.Random;
 public class CollageActivity extends ActionBarActivity implements CollagePreviewFragment.OnBuildingCollageListener {
     private static final String COLLAGES_FOLDER = "Collager";
     private TextView mStatus;
-    private Button mSendCollageButton;
+    private ScaledButton mSendCollageButton;
     private Bitmap mCollage;
-    private CollagePreviewFragment mCollagePreviewFragment;
     private File mCollageFile;
 
     @Override
@@ -41,7 +38,7 @@ public class CollageActivity extends ActionBarActivity implements CollagePreview
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collage);
         mStatus = (TextView) findViewById(R.id.status);
-        mSendCollageButton = (Button) findViewById(R.id.btn_send_collage);
+        mSendCollageButton = (ScaledButton) findViewById(R.id.btn_send_collage);
 
         mSendCollageButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -70,16 +67,16 @@ public class CollageActivity extends ActionBarActivity implements CollagePreview
         if (checkedImagesData != null) {
             Collections.shuffle(checkedImagesData, new Random(System.nanoTime()));
             FragmentManager fm = getSupportFragmentManager();
-            mCollagePreviewFragment =
-                    (CollagePreviewFragment) fm.findFragmentByTag(CollagePreviewFragment.class.getSimpleName());
-            if (mCollagePreviewFragment == null) {
-                mCollagePreviewFragment = new CollagePreviewFragment();
+            CollagePreviewFragment previewFragment = (CollagePreviewFragment)
+                    fm.findFragmentByTag(CollagePreviewFragment.class.getSimpleName());
+            if (previewFragment == null) {
+                previewFragment = new CollagePreviewFragment();
                 Bundle args = new Bundle();
                 args.putParcelableArrayList(Constants.KEY_CHECKED_IMAGES_DATA, checkedImagesData);
-                mCollagePreviewFragment.setArguments(args);
+                previewFragment.setArguments(args);
 
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.collage_preview_frame, mCollagePreviewFragment,
+                ft.replace(R.id.collage_preview_frame, previewFragment,
                         CollagePreviewFragment.class.getSimpleName());
                 ft.commit();
             }

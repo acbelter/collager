@@ -5,7 +5,8 @@
               android:layout_height="match_parent"
               android:layout_gravity="center_horizontal"
               android:paddingLeft="16dp"
-              android:paddingRight="16dp">
+              android:paddingRight="16dp"
+              android:background="@android:color/white">
 
     <GridView
       android:id="@+id/select_grid"
@@ -21,12 +22,18 @@
       android:verticalSpacing="4dp"
       android:listSelector="@android:color/transparent"/>
 
-    <Button
+
+    <com.acbelter.collager.ui.ScaledButton
       android:id="@+id/btn_build_collage"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:paddingLeft="16dp"
+      android:paddingRight="16dp"
       android:layout_marginBottom="16dp"
       android:layout_gravity="center_horizontal"
       android:text="@string/build_collage"
+      android:textSize="20sp"
+      android:typeface="monospace"
+      android:background="@drawable/black_border"
       android:onClick="buildCollage"/>
 </LinearLayout>
