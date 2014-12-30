@@ -6,20 +6,18 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.ResultReceiver;
-
+import android.util.Log;
 import com.acbelter.collager.Constants;
 import com.acbelter.collager.Utils;
 import com.acbelter.nslib.command.BaseNetworkServiceCommand;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class GetUserIdCommand extends BaseNetworkServiceCommand {
     private String mNick;
@@ -33,7 +31,10 @@ public class GetUserIdCommand extends BaseNetworkServiceCommand {
     }
 
     private static String buildSearchIdUrl(String nick) {
-        return Constants.API_URL + "users/search?q=" + nick + "&client_id=" + Constants.CLIENT_ID;
+        String url = Constants.API_URL + "users/search?q=" + nick + "&client_id=" +
+                Constants.CLIENT_ID;
+        Log.d("Collager", "SEARCH USER ID URL: " + url);
+        return url;
     }
 
     @Override

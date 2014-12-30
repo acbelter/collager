@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.acbelter.collager.Constants;
 import com.acbelter.collager.InstagramImageData;
 import com.acbelter.collager.R;
@@ -25,7 +24,6 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
     private EditText mUserNick;
     private Button mGetCollageButton;
     private TextView mStatus;
-    private View.OnClickListener mListener;
 
     private int mGetUserIdRequestId = -1;
     private int mGetPhotosDataRequestId = -1;
@@ -40,7 +38,7 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
         mGetCollageButton = (Button) findViewById(R.id.btn_get_collage);
         mStatus = (TextView) findViewById(R.id.status);
 
-        mListener = new View.OnClickListener() {
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nick = mUserNick.getText().toString().toLowerCase();
@@ -51,7 +49,7 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
                 }
             }
         };
-        mGetCollageButton.setOnClickListener(mListener);
+        mGetCollageButton.setOnClickListener(listener);
 
         if (savedInstanceState != null) {
             mGetUserIdRequestId = savedInstanceState.getInt("get_user_id_request_id");
@@ -94,6 +92,8 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
     private void processException(int exceptionCode) {
         switch (exceptionCode) {
             case Constants.CODE_URL_EXCEPTION: {
+                Toast.makeText(getApplicationContext(), getString(R.string.toast_url_exception),
+                        Toast.LENGTH_SHORT).show();
                 break;
             }
             case Constants.CODE_IO_EXCEPTION: {
@@ -102,6 +102,8 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
                 break;
             }
             case Constants.CODE_JSON_EXCEPTION: {
+                Toast.makeText(getApplicationContext(), getString(R.string.toast_json_exception),
+                        Toast.LENGTH_SHORT).show();
                 break;
             }
             case Constants.CODE_ACCESS_EXCEPTION: {
@@ -110,6 +112,8 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
                 break;
             }
             case Constants.CODE_UNKNOWN_EXCEPTION: {
+                Toast.makeText(getApplicationContext(), getString(R.string.toast_unknown_exception),
+                        Toast.LENGTH_SHORT).show();
                 break;
             }
         }

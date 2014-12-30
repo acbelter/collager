@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-
 import com.acbelter.collager.Constants;
 import com.acbelter.collager.InstagramImageData;
 import com.acbelter.collager.R;
@@ -17,7 +16,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class SelectActivity extends Activity implements OnItemClickListener {
-    private static final int MAX_PHOTOS = 100;
     private SelectGridViewAdapter mGridViewAdapter;
     private List<InstagramImageData> mInstagramImageData;
     private ArrayList<InstagramImageData> mCheckedImagesData;
@@ -33,9 +31,6 @@ public class SelectActivity extends Activity implements OnItemClickListener {
         if (savedInstanceState == null) {
             mInstagramImageData = getIntent().getParcelableArrayListExtra(Constants.KEY_IMAGES_DATA);
             Collections.sort(mInstagramImageData, Collections.reverseOrder());
-            if (mInstagramImageData.size() > MAX_PHOTOS) {
-                mInstagramImageData = mInstagramImageData.subList(0, MAX_PHOTOS);
-            }
             mCheckedImagesData = new ArrayList<InstagramImageData>();
         } else {
             mInstagramImageData = savedInstanceState.getParcelableArrayList(Constants.KEY_IMAGES_DATA);

@@ -14,7 +14,10 @@
 
     <string name="toast_user_not_found">User not found.</string>
     <string name="toast_access_denied">User profile not available.</string>
+    <string name="toast_url_exception">Bad URL.</string>
     <string name="toast_io_exception">No connection.</string>
+    <string name="toast_json_exception">Parsing error.</string>
+    <string name="toast_unknown_exception">Unknown exception.</string>
     <string name="toast_save_collage_failed">Failed to save collage into SD card.</string>
     <string name="toast_load_collage_failed">Failed to load collage from SD card.</string>
     <string name="toast_out_of_memory">Not enough memory to create a collage.</string>
