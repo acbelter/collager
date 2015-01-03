@@ -12,6 +12,7 @@
     <string name="status_loading">Loading data...</string>
     <string name="status_collage_building">Building collage...</string>
 
+    <string name="toast_crash">App has crashed :(</string>
     <string name="toast_user_not_found">User not found.</string>
     <string name="toast_access_denied">User profile not available.</string>
     <string name="toast_url_exception">Bad URL.</string>

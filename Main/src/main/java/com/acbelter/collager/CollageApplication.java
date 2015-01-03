@@ -6,11 +6,19 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.L;
+import org.acra.ACRA;
+import org.acra.ReportingInteractionMode;
+import org.acra.annotation.ReportsCrashes;
 
+@ReportsCrashes(formKey = "", // will not be used
+        mailTo = "acbelter.app@gmail.com",
+        mode = ReportingInteractionMode.TOAST,
+        resToastText = R.string.toast_crash)
 public class CollageApplication extends NetworkApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        ACRA.init(this);
         L.disableLogging();
 
         DisplayImageOptions options = new DisplayImageOptions.Builder()

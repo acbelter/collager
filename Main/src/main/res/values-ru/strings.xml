@@ -12,6 +12,7 @@
     <string name="status_loading">Загрузка данных...</string>
     <string name="status_collage_building">Создание коллажа...</string>
 
+    <string name="toast_crash">Приложение сломалось :(</string>
     <string name="toast_user_not_found">Пользователь не найден.</string>
     <string name="toast_access_denied">Профиль пользователя недоступен.</string>
     <string name="toast_url_exception">Испорченный URL.</string>
