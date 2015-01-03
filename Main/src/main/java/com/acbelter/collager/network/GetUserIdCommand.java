@@ -66,6 +66,10 @@ public class GetUserIdCommand extends BaseNetworkServiceCommand {
                     return;
                 }
             }
+
+            if (mCancelled) {
+                return;
+            }
         } catch (MalformedURLException e) {
             data.putInt(Constants.KEY_EXCEPTION_CODE, Constants.CODE_URL_EXCEPTION);
             notifyFailure(data);

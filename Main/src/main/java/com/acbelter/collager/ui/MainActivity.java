@@ -69,6 +69,27 @@ public class MainActivity extends ActionBarActivity implements NetworkServiceCal
     }
 
     @Override
+    public void onBackPressed() {
+        if (mGetUserIdRequestId == -1 && mGetPhotosDataRequestId == -1) {
+            super.onBackPressed();
+            return;
+        }
+
+        if (mGetUserIdRequestId != -1) {
+            mServiceHelper.cancelRequest(mGetUserIdRequestId);
+            mGetUserIdRequestId = -1;
+            setUiEnabled(true);
+            mStatus.setText("");
+        }
+        if (mGetPhotosDataRequestId != -1) {
+            mServiceHelper.cancelRequest(mGetPhotosDataRequestId);
+            mGetPhotosDataRequestId = -1;
+            setUiEnabled(true);
+            mStatus.setText("");
+        }
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("get_user_id_request_id", mGetUserIdRequestId);
