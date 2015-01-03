@@ -66,26 +66,27 @@ public class GetUserIdCommand extends BaseNetworkServiceCommand {
                     return;
                 }
             }
+
+            if (mCancelled) {
+                return;
+            }
+
+            data.putString(Constants.KEY_USER_ID, "");
+            notifySuccess(data);
         } catch (MalformedURLException e) {
             data.putInt(Constants.KEY_EXCEPTION_CODE, Constants.CODE_URL_EXCEPTION);
             notifyFailure(data);
-            return;
         } catch (IOException e) {
             data.putInt(Constants.KEY_EXCEPTION_CODE, Constants.CODE_IO_EXCEPTION);
             notifyFailure(data);
-            return;
         } catch (JSONException e) {
             data.putInt(Constants.KEY_EXCEPTION_CODE, Constants.CODE_JSON_EXCEPTION);
             notifyFailure(data);
-            return;
         } finally {
             if (conn != null) {
                 conn.disconnect();
             }
         }
-
-        data.putString(Constants.KEY_USER_ID, "");
-        notifySuccess(data);
     }
 
     public static final Parcelable.Creator<GetUserIdCommand> CREATOR =

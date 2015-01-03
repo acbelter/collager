@@ -58,10 +58,13 @@ public class GetPhotosDataCommand extends BaseNetworkServiceCommand {
         HttpsURLConnection conn = null;
         Bundle data = new Bundle();
         try {
-
             ArrayList<InstagramImageData> images = new ArrayList<InstagramImageData>(MAX_IMAGES);
             URL url = new URL(buildGetPhotosUrl(mUserId));
             while (images.size() != MAX_IMAGES) {
+                if (mCancelled) {
+                    return;
+                }
+
                 Log.d("Collager", "GET PHOTOS URL: " + url);
                 conn = (HttpsURLConnection) url.openConnection();
                 if (conn.getResponseCode() == HttpsURLConnection.HTTP_BAD_REQUEST) {
@@ -106,6 +109,10 @@ public class GetPhotosDataCommand extends BaseNetworkServiceCommand {
                 } else {
                     break;
                 }
+            }
+
+            if (mCancelled) {
+                return;
             }
 
             data.putParcelableArrayList(Constants.KEY_IMAGES_DATA, images);
