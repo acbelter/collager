@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Collager</string>
-    <string name="hint_user_nick">User nick</string>
-    <string name="get_collage">Get collage</string>
+    <string name="hint_user_nick">Instagram nick</string>
+    <string name="get_collage">Create collage</string>
     <string name="build_collage">Build collage</string>
     <string name="send">Send</string>
     <string name="sending_with">Send with:</string>

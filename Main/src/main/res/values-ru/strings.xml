@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Collager</string>
-    <string name="hint_user_nick">Ник пользователя</string>
-    <string name="get_collage">Сделать коллаж</string>
+    <string name="hint_user_nick">Ник из Instagram</string>
+    <string name="get_collage">Создать коллаж</string>
     <string name="build_collage">Создать коллаж</string>
     <string name="send">Отправить</string>
     <string name="sending_with">Отправить через:</string>
